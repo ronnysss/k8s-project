@@ -14,7 +14,7 @@ node('') {
    }
    stage('Build Docker Image'){
 	sh '''
-	sudo docker build -t sweetyn/springboot-img:v2 .
+	docker build -t sweetyn/springboot-img:v2 .
 	'''
    }
 }
