@@ -4,6 +4,7 @@ node('') {
 	env.PATH = "${mavenhome}/bin:${env.PATH}"
 	def pom = readMavenPom file: 'pom.xml'
     	def mvnVersion = pom.version
+	echo ${mvnVersion}
    }
    stage('clone'){
 	git branch: 'master' ,
