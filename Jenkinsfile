@@ -18,7 +18,7 @@ node('') {
 	'''
    }
    stage('Upload To DockerHub'){
-      sh '''echo sindhura | sudo -S docker login -u sweetyn086 -p 123sairam123
+      sh '''echo sindhura | sudo -S docker login -u sweetyn -p 123sairam123
             echo sindhura | sudo -S docker push sweentyn/springboot-img:v2
       '''
    }
