@@ -1,10 +1,11 @@
 node('') {
-   stage('Initialise'){
+   stage('Initialize'){
 	def mavenhome = tool 'maven'
 	env.PATH = "${mavenhome}/bin:${env.PATH}"
 	def pom = readMavenPom file: 'pom.xml'
     	def mvnVersion = pom.version
-	sh '''echo ${mvnVersion}'''
+	sh '''
+		echo ${mvnVersion}'''
    }
    stage('clone'){
 	git branch: 'master' ,
