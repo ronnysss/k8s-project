@@ -19,13 +19,13 @@ node('') {
    }
    stage('Build Docker Image'){
 	def buildImageCmd = "echo sindhura | sudo -S docker build -t sweetyn/springboot-img:"+mvnVersion+" ."
-	   sh "${buildImageCmd}"
+	sh "${buildImageCmd}"
    }
    stage('Upload To DockerHub'){
-      sh '''echo sindhura | sudo -S docker login -u sweetyn -p 123sairam123
-            
+      sh '''echo sindhura | sudo -S docker login -u sweetyn -p 123sairam123 
       '''
-      sh "echo sindhura | sudo -S docker push sweetyn/springboot-img:"mvnVersion
+      def imagePushCmd = "echo sindhura | sudo -S docker push sweetyn/springboot-img:"+mvnVersion
+	   sh "${imagePushCmd}"
    }
 
 }
