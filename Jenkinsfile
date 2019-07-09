@@ -15,6 +15,7 @@ mvn clean install '''
 stage('Build Docker Image'){
 sh '''
 sudo docker build -t sweetyn/springboot-img:v2 .
+sindhura
 '''
 }
 }
