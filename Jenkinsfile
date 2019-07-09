@@ -14,7 +14,7 @@ mvn clean install '''
 }
 stage('Build Docker Image'){
 sh '''
-docker build -t sweetyn/springboot-img/:${mvnVersion} .
+docker build -t sweetyn/springboot-img/:${mvnVersion} . '''
 }
 
 }
