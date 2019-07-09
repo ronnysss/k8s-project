@@ -17,4 +17,10 @@ node('') {
 	echo sindhura | sudo -S docker build -t sweetyn/springboot-img:v2 .
 	'''
    }
+   stage('Upload To DockerHub'){
+      sh '''docker login -u sweetyn086 -p 123sairam123
+            docker push sweentyn/springboot-img:v2
+      '''
+   }
+
 }
