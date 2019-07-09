@@ -16,7 +16,8 @@ node('') {
 	mvn clean install '''
    }
    stage('Build Docker Image'){
-	sh "echo sindhura | sudo -S docker build -t sweetyn/springboot-img:"mvnVersion" ."
+	def buildImageCmd = "echo sindhura | sudo -S docker build -t sweetyn/springboot-img:"+mvnVersion+" ."
+	   sh "${buildImageCmd}"
    }
    stage('Upload To DockerHub'){
       sh '''echo sindhura | sudo -S docker login -u sweetyn -p 123sairam123
