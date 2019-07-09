@@ -2,6 +2,8 @@ node('') {
    stage('Initialise'){
 	def mavenhome = tool 'maven'
 	env.PATH = "${mavenhome}/bin:${env.PATH}"
+	def pom = readMavenPom file: 'pom.xml'
+    	def mvnVersion = pom.version
    }
    stage('clone'){
 	git branch: 'master' ,
@@ -14,12 +16,12 @@ node('') {
    }
    stage('Build Docker Image'){
 	sh '''
-	echo sindhura | sudo -S docker build -t sweetyn/springboot-img:v2 .
+	echo sindhura | sudo -S docker build -t sweetyn/springboot-img:${mvnVersion} .
 	'''
    }
    stage('Upload To DockerHub'){
       sh '''echo sindhura | sudo -S docker login -u sweetyn -p 123sairam123
-            echo sindhura | sudo -S docker push sweetyn/springboot-img:v2
+            echo sindhura | sudo -S docker push sweetyn/springboot-img:${mvnVersion}
       '''
    }
 
